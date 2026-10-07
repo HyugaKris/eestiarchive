@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eesti Archive — Designer Streetwear</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0a0a0a;
+            --text-color: #f3f3f3;
+            --muted-color: #888888;
+            --accent-color: #ffffff;
+            --border-color: #222222;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            letter-spacing: -0.01em;
+        }
+
+        /* Navigatsioon */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 48px;
+            background: rgba(10, 10, 10, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .logo {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: 1.25rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-color);
+            text-decoration: none;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+        }
+
+        nav ul li a {
+            color: var(--muted-color);
+            text-decoration: none;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Hero Sektsioon */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            border-bottom: 1px solid var(--border-color);
+            background: radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 100%);
+        }
+
+        .hero h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(3rem, 8vw, 7rem);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: -0.03em;
+            line-height: 0.95;
+            margin-bottom: 24px;
+        }
+
+        .hero p {
+            color: var(--muted-color);
+            font-size: 1.1rem;
+            max-width: 500px;
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 16px 36px;
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            text-decoration: none;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-weight: 700;
+            transition: opacity 0.3s ease;
+        }
+
+        .btn:hover {
+            opacity: 0.8;
+        }
+
+        /* Kollektsioon / Lookbook */
+        .section {
+            padding: 120px 48px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 2rem;
+            text-transform: uppercase;
+            margin-bottom: 64px;
+            letter-spacing: 0.05em;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+        }
+
+        .product-card {
+            background: #121212;
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s ease;
+        }
+
+        .product-card:hover {
+            border-color: var(--muted-color);
+        }
+
+        .product-img {
+            width: 100%;
+            height: 420px;
+            background-color: #1a1a1a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--muted-color);
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .product-info {
+            padding: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .product-title {
+            font-size: 0.95rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .product-price {
+            color: var(--muted-color);
+            font-size: 0.95rem;
+        }
+
+        /* Brändi manifest */
+        .manifesto {
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            padding: 140px 48px;
+            text-align: center;
+            background: #0f0f0f;
+        }
+
+        .manifesto p {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            line-height: 1.4;
+            max-width: 900px;
+            margin: 0 auto;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #d1d1d1;
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 48px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            color: var(--muted-color);
+            border-top: 1px solid var(--border-color);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        footer ul {
+            display: flex;
+            list-style: none;
+            gap: 24px;
+        }
+
+        footer ul li a {
+            color: var(--muted-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        @media (max-width: 768px) {
+            header, .section, footer {
+                padding-left: 24px;
+                padding-right: 24px;
+            }
+            nav ul {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo">Eesti Archive</a>
+        <nav>
+            <ul>
+                <li><a href="#collection">Arhiiv</a></li>
+                <li><a href="#manifesto">Filosoofia</a></li>
+                <li><a href="#contact">Kontakt</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Eesti Archive</h1>
+        <p>Kureeritud tänavamood ja piiratud tiraažiga disainitööd.</p>
+        <a href="#collection" class="btn">Vaata Arhiivi</a>
+    </section>
+
+    <section id="collection" class="section">
+        <h2 class="section-title">Viimane Drop // 001</h2>
+        <div class="grid">
+            <div class="product-card">
+                <div class="product-img">[Toote pilt 1]</div>
+                <div class="product-info">
+                    <span class="product-title">Oversized Heavy Hoodie</span>
+                    <span class="product-price">€120</span>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img">[Toote pilt 2]</div>
+                <div class="product-info">
+                    <span class="product-title">Archive Cargo Pants</span>
+                    <span class="product-price">€145</span>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img">[Toote pilt 3]</div>
+                <div class="product-info">
+                    <span class="product-title">Graphic Boxy Tee</span>
+                    <span class="product-price">€65</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="manifesto" class="manifesto">
+        <p>“Eesti Archive ei ole lihtsalt rõivabränd. See on kohaliku tänavakultuuri, toore esteetika ja kompromissitu disaini ristumispunkt.”</p>
+    </section>
+
+    <footer id="contact">
+        <span>© 2026 Eesti Archive. Kõik õigused kaitstud.</span>
+        <ul>
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">Discord</a></li>
+            <li><a href="#">Email</a></li>
+        </ul>
+    </footer>
+
+</body>
+</html>
